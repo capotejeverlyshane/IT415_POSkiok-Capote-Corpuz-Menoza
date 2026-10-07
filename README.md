@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# GGCampus Store POS Kiosk
 
-## Getting Started
+## Project Description
+A modern, touchscreen-friendly Point-of-Sale (POS) Kiosk web application built for the IT415 practical examination. Designed to be intuitive and realistic for a campus food and merchandise outlet.
 
-First, run the development server:
+## Objectives
+- Build a responsive, touchscreen-optimized kiosk interface.
+- Implement robust state management for a shopping cart (add, increase, decrease, remove).
+- Simulate payment methods (Cash, QR, Credit/Debit) with strict input validation.
+- Demonstrate modern development practices including GitHub workflow, feature branching, pull requests, and AI-assisted development documentation.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features
+- **Product Selection:** Grid of realistic campus products with tap-to-add functionality.
+- **Cart Management:** Real-time order summary with quantity adjustments and removals.
+- **Order Review:** Dedicated review screen summarizing the subtotal and total cost.
+- **Payment Processing:** Support for Cash (with change calculation), simulated QR Pay, and simulated Card payments.
+- **Strict Input Validation:** Rejects empty carts, insufficient cash, blank cash, and negative cash amounts.
+- **Receipt Generation:** Generates a unique, persistent transaction number (e.g., TXN-20261008-034) with full transaction details.
+- **New Transaction Reset:** Securely clears all cart and payment states for the next user.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Technology Used
+- **Framework:** Next.js (App Router)
+- **Language:** JavaScript
+- **Styling:** Custom CSS (No Tailwind, No external UI libraries)
+- **Deployment:** Vercel
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Installation & How to Run
+1. Clone the repository:
+   ```bash
+   git clone <your-repo-url>
+   ```
+2. Navigate into the project folder:
+   ```bash
+   cd IT415_POSkiok-Capote-Corpuz-Menoza
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
+5. Open your browser and navigate to `http://localhost:3000`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## POS Transaction Flow
+1. **Order:** Select items from the product grid to add them to the cart. Adjust quantities or remove items as needed.
+2. **Review:** Review the order and total.
+3. **Payment:** Select a payment method (Cash, QR, Card). Enter sufficient cash or simulate payment.
+4. **Receipt:** View the final receipt with a unique transaction number. Tap "New Transaction" to reset the kiosk.
 
-## Learn More
+## Payment Methods
+- **Cash:** Requires the user to enter an amount equal to or greater than the total. Calculates change automatically. Rejects insufficient amounts.
+- **QR:** Displays a QR code placeholder and simulates payment processing.
+- **Credit/Debit:** Prompts the user to insert/tap a card and simulates a processing delay before completing the transaction.
 
-To learn more about Next.js, take a look at the following resources:
+## Git/GitHub Workflow
+This project strictly followed a professional collaborative workflow:
+- Development took place on designated feature branches (`feature/ui-layout`, `feature/payment-processing`, `feature/bug-fixes`, etc.).
+- Code was pushed to GitHub and merged via Pull Requests (PRs).
+- PRs were reviewed by team members before merging into the `main` branch.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## AI-Assisted Development
+Artificial Intelligence was used to bootstrap the initial Next.js foundation, generate CSS styling for the custom touchscreen interface, diagnose real state-management bugs, and guide refactoring. 
+*See `docs/AI_DOCUMENTATION.md` for a complete log of AI prompts, evaluations, and modifications.*
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Team Members & Contributions
+- **Menoza, J. / Capote, M. / Corpuz, A.**
+  - **M1:** Responsible for UI Layout, Product Selection, Touchscreen Interface, Cart, and Order Summary (`feature/ui-layout`).
+  - **M2:** Responsible for Payment Processing (Cash, QR, Card), Input Validation, and Receipt Generation (`feature/payment-processing`, `feature/input-validation`).
+  - **M3:** Responsible for Quality Assurance, Bug Fixes (Transaction Number Persistence), Refactoring (`lib/utils.js`), and Documentation (`feature/bug-fixes`, `feature/refactoring`, `feature/documentation`).
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deployment
+This application is deployed live on Vercel at:
+[Insert Live Vercel Link Here]
