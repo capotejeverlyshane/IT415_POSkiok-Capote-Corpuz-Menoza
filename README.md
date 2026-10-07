@@ -65,7 +65,7 @@ Artificial Intelligence was used to bootstrap the initial Next.js foundation, ge
 *See `docs/AI_DOCUMENTATION.md` for a complete log of AI prompts, evaluations, and modifications.*
 
 ## Team Members & Contributions
-- **Menoza, J. / Capote, M. / Corpuz, A.**
+- **Menoza, A. / Capote, J. / Corpuz, H.**
   - **M1:** Responsible for UI Layout, Product Selection, Touchscreen Interface, Cart, and Order Summary (`feature/ui-layout`).
   - **M2:** Responsible for Payment Processing (Cash, QR, Card), Input Validation, and Receipt Generation (`feature/payment-processing`, `feature/input-validation`).
   - **M3:** Responsible for Quality Assurance, Bug Fixes (Transaction Number Persistence), Refactoring (`lib/utils.js`), and Documentation (`feature/bug-fixes`, `feature/refactoring`, `feature/documentation`).
