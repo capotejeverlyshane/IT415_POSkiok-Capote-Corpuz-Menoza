@@ -1,3 +1,4 @@
+import { formatCurrency } from '../lib/utils';
 export default function OrderSummary({ cart, onIncrease, onDecrease, onRemove, onProceed }) {
     const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
@@ -28,7 +29,7 @@ export default function OrderSummary({ cart, onIncrease, onDecrease, onRemove, o
                 </div>
             )}
             <div className="cart-total" style={{ marginTop: '20px' }}>
-                <h3>TOTAL: ₱{total.toFixed(2)}</h3>
+                <h3>TOTAL: {formatCurrency(total)}</h3>
                 <button
                     className="proceed-btn"
                     disabled={cart.length === 0}
