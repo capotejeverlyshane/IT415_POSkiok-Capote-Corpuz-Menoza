@@ -1,8 +1,11 @@
 import { useState } from 'react';
+
 export default function PaymentScreen({ total, onPaymentSuccess, onCancel }) {
     const [method, setMethod] = useState(null);
     const [cashGiven, setCashGiven] = useState('');
     const [error, setError] = useState('');
+    const [isProcessing, setIsProcessing] = useState(false); // Bug fix: added processing state
+
     const handleCashSubmit = () => {
         const amount = parseFloat(cashGiven);
         if (isNaN(amount) || amount < total) {
@@ -12,9 +15,18 @@ export default function PaymentScreen({ total, onPaymentSuccess, onCancel }) {
         const change = amount - total;
         onPaymentSuccess({ method: 'CASH', amountPaid: amount, change });
     };
+
     const handleSimulatedPayment = (paymentMethod) => {
-        onPaymentSuccess({ method: paymentMethod, amountPaid: total, change: 0 });
+        if (paymentMethod === 'CARD') {
+            setIsProcessing(true); // Bug fix: Show processing message
+            setTimeout(() => {
+                onPaymentSuccess({ method: paymentMethod, amountPaid: total, change: 0 });
+            }, 2000); // Wait 2 seconds before success
+        } else {
+            onPaymentSuccess({ method: paymentMethod, amountPaid: total, change: 0 });
+        }
     };
+
     return (
         <div className="payment-screen">
             <h2>PAYMENT</h2>
@@ -49,9 +61,16 @@ export default function PaymentScreen({ total, onPaymentSuccess, onCancel }) {
                 </div>
             ) : (
                 <div className="card-payment">
-                    <p>Please tap, insert, or swipe your card.</p>
-                    <button className="proceed-btn" onClick={() => handleSimulatedPayment('CARD')}>Process Payment</button>
-                    <button className="cancel-btn" onClick={() => setMethod(null)}>Back</button>
+                    {/* Bug fix: Check if we are processing */}
+                    {isProcessing ? (
+                        <p style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#2563eb' }}>Processing payment...</p>
+                    ) : (
+                        <>
+                            <p>Please tap, insert, or swipe your card.</p>
+                            <button className="proceed-btn" onClick={() => handleSimulatedPayment('CARD')}>Process Payment</button>
+                            <button className="cancel-btn" onClick={() => setMethod(null)}>Back</button>
+                        </>
+                    )}
                 </div>
             )}
         </div>
