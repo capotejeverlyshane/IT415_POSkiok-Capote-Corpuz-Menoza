@@ -13,7 +13,6 @@ const products = [
   { id: 5, name: 'Bottled Water', price: 20.00, image: '/images/bottled-water.jpg' },
   { id: 6, name: 'Chocolate', price: 25.00, image: '/images/chocolate.jpg' }
 ];
-
 export default function Home() {
   const [cart, setCart] = useState([]);
 
